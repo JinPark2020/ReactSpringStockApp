@@ -15,7 +15,7 @@ public class RoleController {
     private Map<String, Object> codeMap; // Inject loaded JSON data
 
     // Test API to return the loaded JSON data
-    @GetMapping("/api/test-codes")
+    @GetMapping("/api/getcodes")
     public Map<String, Object> getCodes() {
         return codeMap;
     }

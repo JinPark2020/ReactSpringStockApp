@@ -18,8 +18,8 @@ public class WebConfig implements WebMvcConfigurer {
          * Allows cross-origin requests from the specified frontend URL.
          * Adjust the allowedOrigins value for production environments.
          */
-        registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3000") // React development server
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS"); // HTTP methods allowed
+    	registry.addMapping("/api/**") // Apply to all /api/ endpoints
+        .allowedOrigins("http://localhost:3000") // Allow React's development server
+        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");// HTTP methods allowed
     }
 }

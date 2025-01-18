@@ -1,0 +1,10 @@
+spring.application.name=project00
+# PostgreSQL Connection INFO
+spring.datasource.url=jdbc:postgresql://localhost:5432/my_database
+spring.datasource.username=postgres
+spring.datasource.password=your_password
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# Hibernate Setting
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update

@@ -1,0 +1,10 @@
+package com.example.demo.controller;
+
+@RestController
+public class FallbackController {
+
+    @RequestMapping("/**")
+    public String handleInvalidRequests() {
+        return "The requested resource does not exist.";
+    }
+}

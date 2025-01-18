@@ -1,0 +1,19 @@
+spring.application.name=project00
+spring.jackson.serialization.FAIL_ON_EMPTY_BEANS=false
+
+spring.web.resources.add-mappings=false
+server.error.include-message=always
+server.error.include-binding-errors=always
+
+
+# PostgreSQL Connection INFO
+spring.datasource.url=jdbc:postgresql://localhost:5432/myappdb
+spring.datasource.username=postgres
+spring.datasource.password=qwer1234!!
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# Hibernate Setting
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect

@@ -1,0 +1,9 @@
+package com.example.demo.entity;
+
+
+@Entity
+public class User {
+	@Id
+    private Long id;
+    private String name;
+}

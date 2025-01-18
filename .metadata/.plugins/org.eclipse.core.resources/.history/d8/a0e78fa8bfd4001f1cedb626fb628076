@@ -1,0 +1,35 @@
+package com.example.demo.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(csrf -> csrf.disable()) // Disable CSRF protection for simplicity (not recommended in production)
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/api/user/**", "/api/test-codes/**").permitAll() // Publicly accessible APIs
+                .anyRequest().authenticated() // All other requests require authentication
+            )
+            .exceptionHandling(ex -> ex
+                    .accessDeniedHandler((request, response, accessDeniedException) -> {
+                        response.setStatus(HttpStatus.FORBIDDEN.value());
+                        response.setContentType("application/json"); // Set Content-Type as JSON
+                        response.getWriter().write("{\"error\": \"Access Denied: You do not have permission to access this resource.\"}");
+                    })
+                    .authenticationEntryPoint((request, response, authException) -> {
+                        response.setStatus(HttpStatus.UNAUTHORIZED.value());
+                        response.setContentType("text/plain"); // Set Content-Type as plain text
+                        response.getWriter().write("Unauthorized: Please log in to access this resource!.");
+                    })
+            );
+
+        return http.build();
+    }
+}

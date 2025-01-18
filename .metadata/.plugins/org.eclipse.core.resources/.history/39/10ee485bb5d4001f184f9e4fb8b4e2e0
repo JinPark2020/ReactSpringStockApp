@@ -1,0 +1,27 @@
+package com.example.demo.config;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import java.io.InputStream;
+import java.util.Map;
+
+@Configuration
+public class CodeConfig {
+
+    // Load JSON file and return as a Map
+    @Bean
+    public Map<String, Object> loadCodeMap() throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper();
+        
+        // Load JSON from classpath
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("codes.json");
+        if (inputStream == null) {
+            throw new IllegalStateException("codes.json not found in resources!");
+        }
+
+        // Parse JSON into a Map
+        return objectMapper.readValue(inputStream, Map.class);
+    }
+}

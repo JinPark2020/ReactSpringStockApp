@@ -1,0 +1,15 @@
+{
+  "roles": {
+    "CDE0000": {
+      "00": "Guest",
+      "01": "Basic User",
+      "02": "Level 1 User",
+      "03": "Admin"
+    }
+  },
+  "actions": {
+    "PAGE_NAVIGATION": "Page Navigation",
+    "API_CALL": "API Call",
+    "FILE_DOWNLOAD": "File Download"
+  }
+}
